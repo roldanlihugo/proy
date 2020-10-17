@@ -48,7 +48,7 @@ export default function SubcategoryView() {
                     <CLoading />
                 ) : (
                     <div style={{marginTop: '5rem', marginBottom: '1rem'}}>
-                        <h1 className="align-self-center">Listado de categorias</h1>  
+                        <h1 className="align-self-center">Listado de Subcategorias</h1>  
                         <div className="ml-auto mb-3 mt-2">
                             <Link className="btn btn-primary btn-sm ml-auto" to={`/createsub`}>Agregar Subategorias</Link>
                         </div>

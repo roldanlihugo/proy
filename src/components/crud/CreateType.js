@@ -24,13 +24,13 @@ export default function CreateType(){
     const [subCategories, setSubCategories] = useState([]);
     const [productTypes, setProductTypes] = useState([]);
 
-const [productoTypeNameTp, setproductoTypeNameTp] = useState(""); 
-//   const [productoSubcategoryIdTP, setproductoSubcategoryIdTP] = useState("")
+    const manejarSubmit = async (data) => {    
 
-    const manejarSubmit = async (e) => {    
-        let manejarSubmit = {
-            producttypeName: productoTypeNameTp,
-        }  
+        console.log("data", data);
+
+        //Ahora simplemente le pasamos data a firebase
+        let typeC = await createType(data);  
+        
         
         Swal.fire({
             icon: "success",
@@ -38,9 +38,7 @@ const [productoTypeNameTp, setproductoTypeNameTp] = useState("");
             showConfirmButton: false,
             timer: 1000
         })
-        
-        let data = await createType(manejarSubmit); 
-        // window.history.back();
+
         return history.push('/tipo');
 
     }

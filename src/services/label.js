@@ -32,7 +32,7 @@ const createLabel = async (label) => {
 }
 
 const deleteLabelById = async (labelId) => {
-    return await fireDB.collection("label").category(labelId).delete();
+    return await fireDB.collection("label").doc(labelId).delete();
 }
 
 export { getLabels, createLabel , getLabelbyId, deleteLabelById};

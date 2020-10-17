@@ -2,7 +2,7 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 
 export default function ListCategory({categorias, deleteCategory}) {
-    console.log(categorias)
+    console.log("ListCategory", categorias)
     return (
         <div>
   

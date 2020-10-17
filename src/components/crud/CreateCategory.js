@@ -24,72 +24,35 @@ export default function CreateCategory(){
     const [subCategories, setSubCategories] = useState([]);
     const [productTypes, setProductTypes] = useState([]);
 
-    const [categoriaNombreCate, setcategoriaNombreCate] = useState("");
+    const manejarSubmit = async (data) => {    
 
-    const manejarSubmit = async (e) => {    
-        let manejarSubmit = {
-            categoryName: categoriaNombreCate,
-        }  
-        
+        console.log("data", data);
+
+        //Ahora simplemente le pasamos data a firebase
+        let categoryC = await createCategory(data);  
+
+        //Mostramos el alert
         Swal.fire({
             icon: "success",
             title: "Producto creado exitosamente",
             showConfirmButton: false,
             timer: 1000
         })
-        
-        let data = await createCategory(manejarSubmit); 
-        // window.history.back();
-        return history.push('/category');
 
-    }
-  
-    const getCategory = async () => {
-        let data = await getCategories(); 
-        setCategories(data);
-    } 
-
-    const getSubCategory = async (categoryId) => { 
-        let data = await getSubCategoriesByCategory(categoryId); 
-        setSubCategories(data);
-    } 
-
-    const getProductType = async (subCategoryId) => { 
-        let data = await getProductTypesBySubCategory(subCategoryId); 
-        setProductTypes(data);
-    } 
-
-    const getLabel = async () => {
-        let data = await getLabels(); 
-        setLabels(data);
-    }  
-
-    const asignarCategoria = (categoria) =>{
-        getSubCategory(categoria);
-    }
-
-    const asignarSubCategoria = (subcategoria) =>{
-        getProductType(subcategoria);
-    }
-
-
-    //* Validar Select **/
-    
-    let validateSelect = (value) => {
-        console.log("value", value);
-        if(value === "0"){
-            return false;
-        }else{
-            return true;
+        let validateSelect = (value) => {
+            console.log("value", value);
+            if(value === "0"){
+                return false;
+            }else{
+                return true;
+            }
         }
+
+        // regresamos a la pagina principal
+        return history.push('/category');
+        
     }
-
-  
-    useEffect(() => {
-        getCategory();
-        getLabel();
-    },[])
-
+   
     return (
 
         <div className="d-flex justify-content-center">
@@ -101,10 +64,10 @@ export default function CreateCategory(){
                         <div className="card mt-3">
                             <div className="card-body" style={{paddingTop:'10px', paddingBottom: '0px'}}>
 
-                                <h1 className="align-self-center">Agregar un nuevo categoria</h1>  
+                                <h1 className="align-self-center">Agregar una nueva categoria</h1>  
                             
                                 <div className="form-group">
-                                    <label htmlFor="categoryName">Nombre Producto:</label>
+                                    <label htmlFor="categoryName">Nombre de Categoria:</label>
                                     <input
                                     type="text"
                                     className="form-control"

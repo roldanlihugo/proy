@@ -31,7 +31,7 @@ const createCategory = async (category) => {
 }
 
 const deleteCategoryById = async (categoryId) => {
-    return await fireDB.collection("category").category(categoryId).delete();
+    return await fireDB.collection("category").doc(categoryId).delete();
 }
 
 export { 

@@ -24,14 +24,13 @@ export default function CreateSubcategory(){
     const [subCategories, setSubCategories] = useState([]);
     const [productTypes, setProductTypes] = useState([]);
 
-    // const [categoriaIdSub, setcategoriaIdSub] = useState("");
-    const [subcategoriaNameSub, setsubcategoriaNameSub] = useState("");
+    const manejarSubmit = async (data) => {    
 
-    const manejarSubmit = async (e) => {    
-        let manejarSubmit = {
-            // categoryId: categoriaIdSub,
-            subcategoryName: subcategoriaNameSub,
-        }  
+        console.log("data", data);
+
+        //Ahora simplemente le pasamos data a firebase
+        let subcategoryC = await createSubcategory(data);  
+        
         
         Swal.fire({
             icon: "success",
@@ -39,9 +38,7 @@ export default function CreateSubcategory(){
             showConfirmButton: false,
             timer: 1000
         })
-        
-        let data = await createSubcategory(manejarSubmit); 
-        // window.history.back();
+    
         return history.push('/subcategory');
 
     }

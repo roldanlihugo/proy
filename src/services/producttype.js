@@ -32,7 +32,7 @@ const createType = async (producttype) => {
 }
 
 const deleteTypeById = async (typeId) => {
-    return await fireDB.collection("producttype").category(typeId).delete();
+    return await fireDB.collection("producttype").doc(typeId).delete();
 }
 
 export { getProductTypes, getProductTypesBySubCategory,deleteTypeById, createType};
